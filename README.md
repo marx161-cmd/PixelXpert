@@ -1,3 +1,6 @@
+> [!NOTE]
+> This fork is part of a personal hobby-project collection. It is shared because it works for my setup, but there is no promise of regular maintenance, fast support, or long-term compatibility updates.
+
 ### For Pixel Stock Android 12 and 13 (Up to Nov 2022 - AOSP 13R8):  
 [![Latest Release for A12 & A13 up to Nov 2022](https://img.shields.io/badge/Download-v2.4.1-blue)](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1)  
 

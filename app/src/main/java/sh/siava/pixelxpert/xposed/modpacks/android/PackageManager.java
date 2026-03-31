@@ -91,11 +91,10 @@ public class PackageManager extends XposedModPack {
 						.run(param -> {
 							try {
 								if ("android.permission.FORCE_STOP_PACKAGES".equals(param.args[0])) {
-									if (Constants.LAUNCHER_PACKAGE.equals(
-											callMethod(
-													getObjectField(param.thisObject, "mInternal"),
-													"getPackageNameByPid",
-													Binder.getCallingPid()))) {
+									if (Constants.isLauncherPackage((String) callMethod(
+											getObjectField(param.thisObject, "mInternal"),
+											"getPackageNameByPid",
+											Binder.getCallingPid()))) {
 										param.setResult(PERMISSION_GRANTED);
 									}
 								}

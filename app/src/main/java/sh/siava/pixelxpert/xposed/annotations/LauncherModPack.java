@@ -6,9 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import sh.siava.pixelxpert.annotations.BaseModPack;
-import sh.siava.pixelxpert.xposed.Constants;
 
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
-@BaseModPack(targetPackage = Constants.LAUNCHER_PACKAGE)
+@BaseModPack(targetPackage = "")
 public @interface LauncherModPack { }
