@@ -34,6 +34,7 @@ import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.IPixelXpertProxy;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.service.PixelXpertProxy;
+import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.Logger;
@@ -179,7 +180,11 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 				.forEach(modPackData -> {
 					String partOfProcessName = modPackData.targetsMainProcess ? "" : modPackData.childProcessName;
 
-					if((modPackData.targetPackage.equals(PRParam.getPackageName()) || modPackData.targetPackage.isEmpty() /*common mod packs*/ || (modPackData.targetPackage.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE) && isSystemServer))
+					boolean isLauncherMod = modPackData.clazz.isAnnotationPresent(LauncherModPack.class);
+					boolean packageMatches = (modPackData.targetPackage.equals(PRParam.getPackageName()) || modPackData.targetPackage.isEmpty() /*common mod packs*/ || (modPackData.targetPackage.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE) && isSystemServer));
+
+					if(packageMatches
+							   && (!isLauncherMod || Constants.isLauncherPackage(PRParam.getPackageName()))
 							   && processName.contains(partOfProcessName))
 					{
 						//noinspection unchecked

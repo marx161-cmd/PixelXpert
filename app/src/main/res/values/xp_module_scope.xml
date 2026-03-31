@@ -3,6 +3,9 @@
     <string-array name="module_scope">
         <item>com.android.systemui</item> <!-- systemUI -->
         <item>com.google.android.apps.nexuslauncher</item> <!-- Pixel Launcher - Taskbar -->
+        <item>app.lawnchair</item> <!-- Lawnchair github -->
+        <item>app.lawnchair.nightly</item> <!-- Lawnchair nightly -->
+        <item>app.lawnchair.play</item> <!-- Lawnchair play -->
         <item>android</item>  <!-- System Framework -->
         <item>com.android.settings</item> <!-- settings app -->
         <item>com.google.android.dialer</item> <!-- google dialer -->
@@ -12,5 +15,8 @@
 	<string-array name="root_requirement">
 		<item>com.android.systemui</item> <!-- systemUI -->
 		<item>com.google.android.apps.nexuslauncher</item>
+		<item>app.lawnchair</item>
+		<item>app.lawnchair.nightly</item>
+		<item>app.lawnchair.play</item>
 	</string-array>
 </resources>

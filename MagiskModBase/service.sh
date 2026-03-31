@@ -74,6 +74,9 @@ activateModuleLSPD()
 	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"com.android.systemui\",0);" && runSQL
 
 	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"com.google.android.apps.nexuslauncher\",0);" && runSQL
+	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"app.lawnchair\",0);" && runSQL
+	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"app.lawnchair.nightly\",0);" && runSQL
+	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"app.lawnchair.play\",0);" && runSQL
 
 	CMD="insert into scope (mid, app_pkg_name, user_id) values ($NEWMID, \"com.google.android.dialer\",0);" && runSQL
 

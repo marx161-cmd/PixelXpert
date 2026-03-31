@@ -28,6 +28,9 @@ public final class Constants {
 	public static final String SYSTEM_FRAMEWORK_PACKAGE = "android";
 	public static final String TELECOM_SERVER_PACKAGE = "com.android.server.telecom";
 	public static final String LAUNCHER_PACKAGE = "com.google.android.apps.nexuslauncher";
+	public static final String LAWNCHAIR_PACKAGE = "app.lawnchair";
+	public static final String LAWNCHAIR_NIGHTLY_PACKAGE = "app.lawnchair.nightly";
+	public static final String LAWNCHAIR_PLAY_PACKAGE = "app.lawnchair.play";
 	public static final String SETTINGS_PACKAGE = "com.android.settings";
 	public static final String DIALER_PACKAGE = "com.google.android.dialer";
 	public static final String KSU_PACKAGE = "me.weishu.kernelsu";
@@ -39,6 +42,12 @@ public final class Constants {
 	public static final int AI_METHOD_PYTORCH = 1;
 
 	public static final List<String> PREF_UPDATE_EXCLUSIONS = Arrays.asList(BootLoopProtector.LOAD_TIME_KEY_KEY, BootLoopProtector.PACKAGE_STRIKE_KEY_KEY);
+	public static final List<String> SUPPORTED_LAUNCHER_PACKAGES = Arrays.asList(
+			LAUNCHER_PACKAGE,
+			LAWNCHAIR_PACKAGE,
+			LAWNCHAIR_NIGHTLY_PACKAGE,
+			LAWNCHAIR_PLAY_PACKAGE
+	);
 
 	public static String getLockScreenSubjectCachePath(Context context)
 	{
@@ -55,6 +64,11 @@ public final class Constants {
 		return new Intent()
 				.setAction(Constants.ACTION_SWITCH_APP_PROFILE)
 				.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+	}
+
+	public static boolean isLauncherPackage(String packageName)
+	{
+		return SUPPORTED_LAUNCHER_PACKAGES.contains(packageName);
 	}
 
 }
