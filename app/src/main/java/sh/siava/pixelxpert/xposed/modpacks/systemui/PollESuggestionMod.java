@@ -134,8 +134,12 @@ public class PollESuggestionMod extends XposedModPack {
     }
 
     private void acceptSuggestion() {
-        // Commit the suggestion: send back to Poll-E service so it can insert the text.
-        // TODO: broadcast ACTION_POLL_E_ACCEPT with the text once Poll-E service handles it.
+        if (mPendingSuggestion != null) {
+            Intent accept = new Intent(Constants.ACTION_POLL_E_ACCEPT)
+                    .setPackage(Constants.POLL_E_PACKAGE)
+                    .putExtra(Constants.EXTRA_POLL_E_TEXT, mPendingSuggestion);
+            mContext.sendBroadcast(accept, Constants.PERMISSION_POLL_E_IPC);
+        }
         hideSuggestion();
     }
 

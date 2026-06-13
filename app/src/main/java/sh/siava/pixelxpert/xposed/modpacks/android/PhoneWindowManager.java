@@ -1,6 +1,8 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
 import static android.content.Context.RECEIVER_EXPORTED;
+import static android.view.KeyEvent.ACTION_DOWN;
+import static android.view.KeyEvent.KEYCODE_VOLUME_DOWN;
 
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
@@ -17,6 +19,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.WindowManager;
 
 import java.util.List;
@@ -172,6 +175,25 @@ public class PhoneWindowManager extends XposedModPack {
 			PhoneWindowManagerClass
 					.after("enableScreen")
 					.run(param -> windowMan = param.thisObject);
+
+			PhoneWindowManagerClass
+					.before("interceptKeyBeforeQueueing")
+					.run(param -> {
+						try {
+							KeyEvent event = (KeyEvent) param.args[0];
+							if (event.getKeyCode() != KEYCODE_VOLUME_DOWN) {
+								return;
+							}
+
+							if (event.getAction() == ACTION_DOWN && event.getRepeatCount() == 0) {
+								Intent accept = new Intent(Constants.ACTION_POLL_E_ACCEPT)
+										.setPackage(Constants.POLL_E_PACKAGE);
+								mContext.sendBroadcast(accept, Constants.PERMISSION_POLL_E_IPC);
+							}
+							param.setResult(0);
+						} catch (Throwable ignored) {
+						}
+					});
 		} catch (Throwable ignored) {
 		}
 	}

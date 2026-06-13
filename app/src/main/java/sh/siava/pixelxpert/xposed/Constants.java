@@ -24,6 +24,7 @@ public final class Constants {
 	// Poll-E suggestion IPC
 	public static final String POLL_E_PACKAGE = "com.termux.suggest";
 	public static final String ACTION_POLL_E_SUGGESTION = "com.termux.suggest.SUGGESTION";
+	public static final String ACTION_POLL_E_ACCEPT = "com.termux.suggest.ACCEPT";
 	public static final String EXTRA_POLL_E_TEXT = "text";
 	public static final String PERMISSION_POLL_E_IPC = "com.termux.suggest.permission.POLL_E_IPC";
 
