@@ -21,6 +21,12 @@ public final class Constants {
 	public static final String ACTION_XPOSED_CONFIRMED = APPLICATION_ID + ".ACTION_XPOSED_CONFIRMED";
 	public static final String ACTION_KSU_ACQUIRE_ROOT = APPLICATION_ID + "ACTION_KSU_ACQUIRE_ROOT";
 
+	// Poll-E suggestion IPC
+	public static final String POLL_E_PACKAGE = "com.termux.suggest";
+	public static final String ACTION_POLL_E_SUGGESTION = "com.termux.suggest.SUGGESTION";
+	public static final String EXTRA_POLL_E_TEXT = "text";
+	public static final String PERMISSION_POLL_E_IPC = "com.termux.suggest.permission.POLL_E_IPC";
+
 	public static String DEFAULT_PREFS_FILE_NAME = BuildConfig.APPLICATION_ID + "_preferences";
 
 	//None of these are used for matching package names during modpack loading. package names must be defined in respective annotations
