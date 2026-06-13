@@ -24,6 +24,7 @@ import sh.siava.pixelxpert.ui.preferences.MaterialPrimarySwitchPreference;
 import sh.siava.rangesliderpreference.RangeSliderPreference;
 
 public class PreferenceHelper {
+	private static final String ICONIFY_COMPATIBILITY_MODE = "IconifyCompatibilityMode";
 	private final ExtendedSharedPreferences mPreferences;
 
 	public static PreferenceHelper instance;
@@ -69,8 +70,17 @@ public class PreferenceHelper {
 
 	public static boolean isVisible(String key) {
 		if (instance == null) return true;
+		boolean iconifyCompatibilityMode = instance.mPreferences.getBoolean(ICONIFY_COMPATIBILITY_MODE, false);
 
 		switch (key) {
+			case "NotificationIconLimit":
+			case "systemIconsMultiRow":
+			case "notificationAreaMultiRow":
+			case "SBIgnoredIcons":
+			case "KGIgnoredIcons":
+			case "QSIgnoredIcons":
+				return !iconifyCompatibilityMode;
+
 			case "ForceThemedLauncherIcons":
 				return !instance.mPreferences.getBoolean("DisableThemedIconsPref", false);
 
@@ -155,7 +165,7 @@ public class PreferenceHelper {
 				return instance.mPreferences.getBoolean("SyncNTPTime", false);
 
 			case "systemIconSortPlan":
-				return instance.mPreferences.getBoolean("systemIconsMultiRow", false);
+				return !iconifyCompatibilityMode && instance.mPreferences.getBoolean("systemIconsMultiRow", false);
 
 			case "networkStatDLColor":
 			case "networkStatULColor":

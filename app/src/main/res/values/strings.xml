@@ -595,5 +595,8 @@
     <string name="restart_now">Reboot now</string>
     <string name="watts">Watts</string>
     <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="compatibility_section_title">Compatibility</string>
+    <string name="iconify_compatibility_mode_title">Iconify compatibility mode</string>
+    <string name="iconify_compatibility_mode_summary">Hide PixelXpert status bar icon and notification controls that overlap with Iconify.</string>
 
 </resources>

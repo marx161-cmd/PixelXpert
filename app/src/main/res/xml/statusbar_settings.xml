@@ -10,6 +10,20 @@
         search:ignore="true" />
 
     <sh.siava.pixelxpert.ui.preferences.MaterialPreferenceCategory
+        android:title="@string/compatibility_section_title"
+        app:iconSpaceReserved="false"
+        search:ignore="true">
+
+        <sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
+            android:defaultValue="false"
+            android:key="IconifyCompatibilityMode"
+            android:summary="@string/iconify_compatibility_mode_summary"
+            android:title="@string/iconify_compatibility_mode_title"
+            app:iconSpaceReserved="false" />
+
+    </sh.siava.pixelxpert.ui.preferences.MaterialPreferenceCategory>
+
+    <sh.siava.pixelxpert.ui.preferences.MaterialPreferenceCategory
         android:title="@string/statusbar_general_options"
         app:iconSpaceReserved="false"
         search:ignore="true">
